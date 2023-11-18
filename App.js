@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native'
 
 export default function App() {
 
@@ -11,8 +11,11 @@ export default function App() {
   }
 
   function handleItemsList() {
-      setItemsList((currentItemsList) => 
-          [...currentItemsList, enteredItem])
+    setItemsList((currentItemsList) => 
+        [...currentItemsList, 
+        { text: enteredItem, key: Math.random().toString() }
+        ]
+    )
   }
 
   useEffect(() => {
@@ -37,13 +40,19 @@ export default function App() {
         />
       </View>
       <View style={styles.itemsView}>
-        <ScrollView style={styles.scrollView}>
-            {itemsList.map((item) => (
-              <View key={item} style={styles.itemView}>
-                <Text style={styles.itemText}>{item}</Text>
+        <FlatList 
+          data={itemsList} 
+          style={styles.flatList} 
+          renderItem={(itemData) => {
+            return (
+              <View style={styles.itemView}>
+                <Text style={styles.itemText}>{itemData.item.text}</Text>
               </View>
-            ))}
-        </ScrollView>
+            )
+          }} 
+          alwaysBounceVertical={false}
+        />
+
       </View>
     </View>
   )
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: 'center',
   },
-  scrollView: {
+  flatList: {
     width: '100%'
   },
   itemView: {
