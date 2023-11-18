@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native'
+import { StyleSheet, View, Button, TextInput, FlatList } from 'react-native'
+import Item from './components/Item'
 
 export default function App() {
 
@@ -38,18 +39,15 @@ export default function App() {
         />
       </View>
       <View style={styles.itemsView}>
-        <FlatList 
-          data={itemsList} 
-          style={styles.flatList} 
-          renderItem={(itemData) => {
-            return (
-              <View style={styles.itemView}>
-                <Text style={styles.itemText}>{itemData.item}</Text>
-              </View>
-            )
-          }} 
-          alwaysBounceVertical={false}
-        />
+      <FlatList 
+        data={itemsList} 
+        style={styles.flatList} 
+        renderItem={(itemData) => {
+          return <Item item={itemData.item} />
+        }} 
+        alwaysBounceVertical={false}
+      />
+
 
       </View>
     </View>
@@ -84,15 +82,5 @@ const styles = StyleSheet.create({
   },
   flatList: {
     width: '100%'
-  },
-  itemView: {
-    width: '100%',
-    marginBottom: 8,
-    padding: 15,
-    backgroundColor: 'red',
-  },
-  itemText: {
-    textAlign: 'center',
-    color: 'white',
   },
 })
