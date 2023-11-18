@@ -12,9 +12,7 @@ export default function App() {
 
   function handleItemsList() {
     setItemsList((currentItemsList) => 
-        [...currentItemsList, 
-        { text: enteredItem, key: Math.random().toString() }
-        ]
+        [...currentItemsList, enteredItem]
     )
   }
 
@@ -46,7 +44,7 @@ export default function App() {
           renderItem={(itemData) => {
             return (
               <View style={styles.itemView}>
-                <Text style={styles.itemText}>{itemData.item.text}</Text>
+                <Text style={styles.itemText}>{itemData.item}</Text>
               </View>
             )
           }} 
