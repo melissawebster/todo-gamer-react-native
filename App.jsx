@@ -17,6 +17,10 @@ export default function App() {
     )
   }
 
+  function handleDeleteItem() {
+    console.log('deleted')
+  }
+
   useEffect(() => {
     console.log(enteredItem)
   }, [enteredItem])
@@ -24,6 +28,8 @@ export default function App() {
   useEffect(() => {
     console.log(itemsList)
   }, [itemsList])
+
+
 
   return (
     <View style={styles.appView}>
@@ -43,7 +49,7 @@ export default function App() {
         data={itemsList} 
         style={styles.flatList} 
         renderItem={(itemData) => {
-          return <Item item={itemData.item} />
+          return <Item item={itemData.item} onDeleteItem={handleDeleteItem} />
         }} 
         alwaysBounceVertical={false}
       />

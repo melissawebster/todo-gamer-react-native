@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native"
-import { View, Text } from "react-native"
+import { StyleSheet, View, Text, Pressable } from "react-native"
 
-function Item({ item }) {
+function Item({ item, onDeleteItem }) {
     return (
-        <View style={styles.itemView}>
-            <Text style={styles.itemText}>{item}</Text>
-        </View>
+        <Pressable onPress={onDeleteItem}>
+            <View style={styles.itemView}>
+                <Text style={styles.itemText}>{item}</Text>
+            </View>
+        </Pressable>
     )
  }
 
