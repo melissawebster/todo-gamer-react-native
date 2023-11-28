@@ -15,12 +15,13 @@ export default Item
 const styles = StyleSheet.create({
     itemView: {
         width: '100%',
+        justifyContent: 'center',
         marginBottom: 8,
         padding: 15,
-        backgroundColor: 'red',
+        backgroundColor: '#9BBC0F',
       },
       itemText: {
         textAlign: 'center',
-        color: 'white',
-      },
+        color: '#000',
+      }, 
 })

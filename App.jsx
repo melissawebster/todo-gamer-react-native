@@ -38,12 +38,13 @@ export default function App() {
       <View style={styles.inputView}>
         <TextInput 
           style={styles.textInputView} 
-          placeholder='Your Courses goal!'
+          placeholder='Type here...'
           onChangeText={handleEnteredItem} 
         />
         <Button 
-          title="Add Goal"
-          onPress={handleItemsList} 
+          color='#0F380F'
+          title="ADD TASK"
+          onPress={handleItemsList}
         />
       </View>
       <View style={styles.itemsView}>
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   appView: {
     flex: 1,
     paddingTop: 30,
-    paddingHorizontal: 16,
+    backgroundColor: '#0F380F',
   },
   inputView: {
     flex: 1,
@@ -72,21 +73,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 24,
-    borderBottomWidth: 1,
+    paddingHorizontal: 20,
+    backgroundColor: '#306230',
   },
   textInputView: {
-    borderWidth: 1,
-    borderColor: '#ccc',
+    borderWidth: 0.8,
+    borderColor: '#8BAC0F',
     width: '65%',
-    padding: 9,
+    padding: 5,
+    backgroundColor: '#DCF7BB',
   },
   itemsView: {
-    backgroundColor: 'green',
     marginBottom: 30,
     flex: 4,
     alignItems: 'center',
   },
   flatList: {
-    width: '100%'
+    width: '80%'
   },
 })
