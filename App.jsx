@@ -17,9 +17,12 @@ export default function App() {
     )
   }
 
-  function handleDeleteItem() {
-    console.log('deleted')
+  function handleRemoveItem(itemToRemove) {
+    setItemsList((currentItemsList) => 
+      currentItemsList.filter((item, index) => item !== itemToRemove || index !== currentItemsList.indexOf(itemToRemove))
+    );
   }
+  
 
   useEffect(() => {
     console.log(enteredItem)
@@ -28,7 +31,6 @@ export default function App() {
   useEffect(() => {
     console.log(itemsList)
   }, [itemsList])
-
 
 
   return (
@@ -48,13 +50,11 @@ export default function App() {
       <FlatList 
         data={itemsList} 
         style={styles.flatList} 
-        renderItem={(itemData) => {
-          return <Item item={itemData.item} onDeleteItem={handleDeleteItem} />
+        renderItem={({ item }) => { 
+          return <Item item={item} onPress={() => handleRemoveItem(item)} />
         }} 
         alwaysBounceVertical={false}
       />
-
-
       </View>
     </View>
   )
